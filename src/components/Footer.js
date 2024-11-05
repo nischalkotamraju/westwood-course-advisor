@@ -16,7 +16,7 @@ const Footer = () => {
               Made by Nischal Kotamraju.
               <br />
               <a
-                href={emailNischal}
+                href={`mailto:${emailNischal}`}
                 target="_blsnk"
                 rel="noopener noreferrer"
                 className="underline"
@@ -25,15 +25,14 @@ const Footer = () => {
               </a>{" "}
               |{" "}
               <a
-                href={emailCounselor}
+                href={`mailto:${emailCounselor}`}
                 target="_blsnk"
                 rel="noopener noreferrer"
                 className="underline"
               >
                 Head Counselor Email
               </a>
-            </p>{" "}
-            <span className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-orange-100 text-orange-800 ring-orange-800/20 mt-2">
+            </p>{" "}            <span className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset bg-orange-100 text-orange-800 ring-orange-800/20 mt-2">
               v0.1
             </span>
           </div>

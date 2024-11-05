@@ -8,6 +8,10 @@
   font-family: 'Raleway', sans-serif;
 }
 
+body {
+  background-color: #171717;
+}
+
 .gradient-text {
   background: #D45F29;
   background: linear-gradient(135deg, #E07F4F, #B84F23);  -webkit-background-clip: text;

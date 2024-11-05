@@ -1,6 +1,5 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
 
 const navigation = [
   { name: 'Courses', href: '/', current: false },
@@ -32,9 +31,9 @@ export default function Header() {
             <div className="hidden sm:ml-6 sm:flex sm:items-center mt-3">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <Link
+                  <a
                     key={item.name}
-                    to={item.href}
+                    href={item.href}
                     aria-current={item.current ? 'page' : undefined}
                     className={classNames(
                       item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -42,7 +41,7 @@ export default function Header() {
                     )}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
@@ -55,8 +54,8 @@ export default function Header() {
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
-              as={Link}
-              to={item.href}
+              as="a"
+              href={item.href}
               aria-current={item.current ? 'page' : undefined}
               className={classNames(
                 item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
