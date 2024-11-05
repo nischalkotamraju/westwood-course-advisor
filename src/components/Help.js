@@ -39,37 +39,39 @@ export default function Help () {
         };
 
         let courses = [];
-        response.data.values.forEach((row) => {
-          for (let i = 0; i < row.length; i += 4) {
-            if (row[i] && row[i + 1]) {
-              const credits = row[i + 2] ? row[i + 2]
-                .split(",")
-                .map((key) => creditMeanings[key.trim()] || key.trim())
-                .join(", ") : "Single Credit Course";
+        if (response.data && response.data.values) {
+          response.data.values.forEach((row) => {
+            for (let i = 0; i < row.length; i += 4) {
+              if (row[i] && row[i + 1]) {
+                const credits = row[i + 2] ? row[i + 2]
+                  .split(",")
+                  .map((key) => creditMeanings[key.trim()] || key.trim())
+                  .join(", ") : "Single Credit Course";
 
+                courses.push({
+                  name: row[i + 1],
+                  number: row[i],
+                  credits: credits
+                });
+              }
+            }
+
+            if (row[7]) {
               courses.push({
-                name: row[i + 1],
-                number: row[i],
-                credits: credits
+                name: row[7],
+                number: row[6],
+                credits: row[8] ? row[8]
+                  .split(",")
+                  .map((key) => creditMeanings[key.trim()] || key.trim())
+                  .join(", ") : "Single Credit Course"
               });
             }
-          }
-
-          if (row[7]) {
-            courses.push({
-              name: row[7],
-              number: row[6],
-              credits: row[8] ? row[8]
-                .split(",")
-                .map((key) => creditMeanings[key.trim()] || key.trim())
-                .join(", ") : "Single Credit Course"
-            });
-          }
-        });
-
+          });
+        }
         setCourses(courses);
       } catch (error) {
         console.error("Error fetching courses:", error);
+        setCourses([]);
       }
     };
     fetchCourses();
@@ -88,15 +90,25 @@ export default function Help () {
     e.preventDefault();
     setIsLoading(true);
     try {
+      const coursesString = courses.length > 0 ? courses.map(course => 
+        `${course.number}: ${course.name} (${course.credits})`
+      ).join('\n') : 'No courses available';
+
+      const systemMessage = `You are a knowledgeable academic advisor who provides detailed guidance about courses to students. Here are the available courses:\n${coursesString}`;
+
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are a knowledgeable academic advisor who provides detailed guidance about courses to students. Aim to give comprehensive explanations that include benefits, considerations, and relevant context. Keep responses focused on academic topics and course-related inquiries." },
-          { role: "system", content: "Here are the available courses: " + JSON.stringify(courses) },
+          { role: "system", content: systemMessage },
           { role: "user", content: userInput }
         ],      
       });
-      setChatbotResponse(response.choices[0].message.content);
+
+      if (response.choices && response.choices[0] && response.choices[0].message) {
+        setChatbotResponse(response.choices[0].message.content);
+      } else {
+        setChatbotResponse('Sorry, I could not generate a response. Please try again.');
+      }
     } catch (error) {
       console.error('Error:', error);
       setChatbotResponse('Sorry, there was an error processing your request. Please try again later.');
@@ -210,4 +222,4 @@ export default function Help () {
       )}
     </div>
   );
-};
+}
