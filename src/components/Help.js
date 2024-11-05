@@ -92,7 +92,7 @@ export default function Help () {
         model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: "You are a knowledgeable academic advisor who provides detailed guidance about courses to students. Aim to give comprehensive explanations that include benefits, considerations, and relevant context. Keep responses focused on academic topics and course-related inquiries." },
-          { role: "user", content: "Here are the available courses: " + JSON.stringify(courses) },
+          { role: "system", content: "Here are the available courses: " + JSON.stringify(courses) },
           { role: "user", content: userInput }
         ],      
       });
