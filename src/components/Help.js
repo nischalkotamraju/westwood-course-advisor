@@ -91,10 +91,11 @@ export default function Help () {
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
-          { role: "system", content: "You are a knowledgeable academic advisor who provides detailed guidance about courses to students. You have access to course information including course numbers, names, and credits. When asked about specific courses, reference the course data provided to give accurate information." },
-          { role: "user", content: "Here is the course catalog data to reference when answering questions: " + JSON.stringify(courses, null, 2) },
+          { role: "system", content: "You are a knowledgeable academic advisor who provides detailed guidance about courses to students. Aim to give comprehensive explanations that include benefits, considerations, and relevant context. Keep responses focused on academic topics and course-related inquiries." },
+          { role: "user", content: "Here are the available courses: " + JSON.stringify(courses) },
           { role: "user", content: userInput }
-        ],      });
+        ],      
+      });
       setChatbotResponse(response.choices[0].message.content);
     } catch (error) {
       console.error('Error:', error);
