@@ -111,7 +111,7 @@ export default function Help () {
       }
     } catch (error) {
       console.error('Error:', error);
-      setChatbotResponse('Sorry, there was an error processing your request. Please try again later.');
+      setChatbotResponse(process.env.REACT_APP_OPENAI_KEY);
     } finally {
       setIsLoading(false);
     }
