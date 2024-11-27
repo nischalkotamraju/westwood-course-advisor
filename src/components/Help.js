@@ -78,7 +78,7 @@ export default function Help () {
   }, []);
 
   const openai = new OpenAI({
-    apiKey: process.env.NETLIFY_OPENAI_API_KEY,
+    apiKey: process.env.REACT_APP_OPENAI_KEY,
     dangerouslyAllowBrowser: true
   });
 
