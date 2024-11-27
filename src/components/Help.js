@@ -78,7 +78,7 @@ export default function Help () {
   }, []);
 
   const openai = new OpenAI({
-    apiKey: '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',
+    apiKey: NETLIFY_OPENAI_API_KEY,
     dangerouslyAllowBrowser: true
   });
 
