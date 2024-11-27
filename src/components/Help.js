@@ -78,7 +78,7 @@ export default function Help () {
   }, []);
 
   const openai = new OpenAI({
-    apiKey: 'sk-la8GDlMXteiPcwykGJT76wSzhAHmxeMJOg94K4Tgl9T3BlbkFJuzdz0x6rC3BFZlwH8EjnnVYQTdTvgn739E5q0bvrIA',
+    apiKey: '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',
     dangerouslyAllowBrowser: true
   });
 
@@ -94,7 +94,7 @@ export default function Help () {
         `${course.number}: ${course.name} (${course.credits})`
       ).join('\n') : 'No courses available';
 
-      const systemMessage = `You are a knowledgeable academic advisor who provides detailed guidance about courses to students. Here are the available courses:\n${coursesString}`;
+      const systemMessage = `You are a knowledgeable academic advisor who provides detailed guidance about courses to students at Westwood High School. The developer email is kotamrajunischal@gmail.com and the head counselor is holly_browning@roundrockisd.org. YOU MUST ONLY answer course related questions (NOT SCHOOL IN GENERAL, SPECIFICALLY COURSES), which means that if they ask some random question you must tell them that they have to ask a relevant question. Be enthusiastic in your conversations. Here are the available courses:\n${coursesString}`;
 
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
