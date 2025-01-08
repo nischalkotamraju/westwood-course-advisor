@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/nischalkotamraju/westwood-course-advisor.git/static/css/main.3e05a4fe.css",
+    "main.js": "/nischalkotamraju/westwood-course-advisor.git/static/js/main.aa4cac1e.js",
+    "static/media/logo.png": "/nischalkotamraju/westwood-course-advisor.git/static/media/logo.d122286403f61355e4b5.png",
+    "index.html": "/nischalkotamraju/westwood-course-advisor.git/index.html",
+    "main.3e05a4fe.css.map": "/nischalkotamraju/westwood-course-advisor.git/static/css/main.3e05a4fe.css.map",
+    "main.aa4cac1e.js.map": "/nischalkotamraju/westwood-course-advisor.git/static/js/main.aa4cac1e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e05a4fe.css",
+    "static/js/main.aa4cac1e.js"
+  ]
+}
