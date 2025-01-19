@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://thirtysixact.netlify.app/sitemap.xml
